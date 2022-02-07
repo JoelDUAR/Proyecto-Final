@@ -1,0 +1,31 @@
+{
+  "name": "proyecto-final",
+  "version": "1.0.0",
+  "description": "Proyecto Final Programador web Inicial",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoelDUAR/Proyecto-Final.git"
+  },
+  "author": "Joel Dupraz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoelDUAR/Proyecto-Final/issues"
+  },
+  "homepage": "https://github.com/JoelDUAR/Proyecto-Final#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "mysql": "^2.18.1",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
