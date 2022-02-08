@@ -6,6 +6,7 @@ require("dotenv").config();
 const session = require ("express-session");
 
 const routeLogin = require("./routes/Login");
+const routeHome = require("./routes/Home");
 const { Console } = require("console");
 
 const app = express();
@@ -17,6 +18,7 @@ app.set("view wngine", "hbs");
 hbs.registerPartials(path.join(__dirname,"./views/partials"));
 
 app.use("/", routeLogin);
+app.use("/Home", routeHome);
 
 app.listen(PORT, (err) =>{
     err? Console.log("Ocurrió un error") : console.log(`Servidor corre en http://localhost:${PORT}`)
