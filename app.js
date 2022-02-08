@@ -14,11 +14,15 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended: false})); 
 
-app.set("view wngine", "hbs");
+app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname,"./views/partials"));
 
 app.use("/", routeLogin);
 app.use("/Home", routeHome);
+
+app.get("*", (req, res) =>{
+    res.send("Página no encontrada")
+});
 
 app.listen(PORT, (err) =>{
     err? Console.log("Ocurrió un error") : console.log(`Servidor corre en http://localhost:${PORT}`)
