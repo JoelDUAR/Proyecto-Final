@@ -1,0 +1,77 @@
+<div class="formulario container d-flex mt-3 ">
+  <form class="forms row d-flex g-4 needs-validation col-11 col-md-8 con-lg-6 rounded" action="Contact" method="post" novalidate>
+    <div class="text-white text-center">
+      <p class="mt-5"><h1>Escribinos tu consulta</h1></p>
+       </div>
+    <div class="col-md-5">
+      <label for="name" class="form-label" hidden>Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        autofocus
+        placeholder="Ingresa tu nombre"
+        required
+      />
+      <div class="valid-feedback">
+        Correcto!
+      </div>
+    </div>
+    <div class="col-md-5">
+      <label for="lastname" class="form-label" hidden>Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        placeholder="Ingresa tu apellido"
+        required
+      />
+      <div class="valid-feedback">
+        Correcto!
+      </div>
+    </div>
+  <div class="col-md-5">
+      <label for="usuario" class="form-label" hidden>Usuario</label>
+      <input
+        type="text"
+        class="form-control"
+        id="usuario"
+        name="usuario"
+        placeholder="Ingresa tu usuario"
+        required
+      />
+      <div class="valid-feedback">
+        Correcto!
+      </div>
+    </div>
+    <div class="col-md-5">
+      <label for="mail" class="form-label" hidden>Mail</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input
+          type="email"
+          class="form-control"
+          id="mail"
+          aria-describedby="inputGroupPrepend"
+          required
+          placeholder="Ingresa tu mail"
+        />
+        <div class="invalid-feedback">
+          Escriba su mail!
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="container d-flex justify-content-center">
+         <Label for="message" hidden>Ingrese mensaje</Label>
+        <textarea class="col-md-5" name="message" id="message" cols="60" rows="10" placeholder="Escribí tu mensaje aquí...."></textarea>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center col-12">
+      <button class="btn btn-primary mb-4" type="submit">Enviar</button>
+    </div>
+  </form>
+</div>
+
