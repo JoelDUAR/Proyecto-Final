@@ -5,6 +5,9 @@
     method="post"
     novalidate
   >
+  {{#each arrErrors}}
+  <p>{{msg}}</p>
+  {{/each}}
     <div class="text-white text-center">
       <p class="mt-5"><h1>Escribinos tu consulta</h1></p>
     </div>
@@ -17,12 +20,8 @@
         name="name"
         autofocus
         placeholder="Ingresa tu nombre"
-        required
-      />
-      <div class="valid-feedback">
-        Correcto!
-      </div>
-    </div>
+      {{#if dataForm.name}} value="{{dataForm.name}}" {{/if}}/>
+   </div>
     <div class="col-md-5">
       <label for="lastname" class="form-label" hidden>Apellido</label>
       <input
@@ -31,11 +30,7 @@
         id="lastname"
         name="lastname"
         placeholder="Ingresa tu apellido"
-        required
-      />
-      <div class="valid-feedback">
-        Correcto!
-      </div>
+      {{#if dataForm.lastname}} value="{{dataForm.lastname}}" {{/if}}/>
     </div>
     <div class="col-md-5">
       <label for="usuario" class="form-label" hidden>Usuario</label>
@@ -43,30 +38,22 @@
         type="text"
         class="form-control"
         id="usuario"
-        name="usuario"
+        name="user"
         placeholder="Ingresa tu usuario"
-        required
-      />
-      <div class="valid-feedback">
-        Correcto!
-      </div>
+      {{#if dataForm.user}} value="{{dataForm.user}}" {{/if}}/>
     </div>
     <div class="col-md-5">
       <label for="mail" class="form-label" hidden>Mail</label>
       <div class="input-group has-validation">
         <span class="input-group-text" id="inputGroupPrepend">@</span>
         <input
-          type="email"
+          type="text"
           class="form-control"
           id="mail"
           name="mail"
           aria-describedby="inputGroupPrepend"
-          required
           placeholder="Ingresa tu mail"
-        />
-        <div class="invalid-feedback">
-          Escriba su mail!
-        </div>
+        {{#if dataForm.mail}} value="{{dataForm.mail}}" {{/if}}/>
       </div>
     </div>
     <div class="col-md-6">
@@ -79,12 +66,12 @@
           cols="60"
           rows="10"
           placeholder="Escribí tu mensaje aquí...."
-        ></textarea>
+        >{{dataForm.message}}</textarea>
       </div>
     </div>
-    {{#if message}}
+    {{#if messageStatus}}
     <div class="container d-flex alert alert-secondary justify-content-center col-5" role="alert">
-      {{message}}
+      {{messageStatus}}
     </div>
     {{/if}}
     <div class="container d-flex justify-content-center col-4">
