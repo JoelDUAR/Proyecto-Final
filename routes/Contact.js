@@ -15,15 +15,16 @@ router.post("/", (req,res) =>{
         to: "atencionyireh@ConstantSourceNode.com",
         from: req.body.email,
         subject: "Mensaje enviado desde el formulario de contacto",
-        html: `${req.body.name} ${req.body.lastname} envió el siguiente mensaje: ${req.body.message}`
+        html: `${req.body.name} ${req.body.lastname} envió el siguiente mensaje: ${req.body.message}.
+        Contactar al mail: ${req.body.mail}`
     };
 
     const transport = nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
-        port: 2525,
+        host: process.env.MT_HOST,
+        port: process.env.MT_PORT,
         auth: {
-          user: "a9d956e345dd39",
-          pass: "27c5c1b1f4c112"
+          user: process.env.MT_USER,
+          pass: process.env.MT_PASS
         }
       });
 
