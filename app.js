@@ -3,13 +3,13 @@ const hbs = require("hbs");
 const path = require("path");
 require("dotenv").config();
 const PORT = 3000;
+const fileupload = require("express-fileupload")
 
 const routeLogin = require("./routes/Login");
 const routeHome = require("./routes/Home");
 const routeMaster = require("./routes/Master");
 const routeContact = require("./routes/Contact");
 const session = require ("express-session");
-const req = require("express/lib/request");
 const app = express();
 
 app.use(session({
@@ -31,11 +31,17 @@ res.render("Login", {message})
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({extended: false})); 
+app.use(fileupload ({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+
+}))
 
 const localAuth = (req, res, next) => {
     app.locals.userLogged = req.session.user
     next();}
 app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(__dirname,"./views/partials"));
 
 

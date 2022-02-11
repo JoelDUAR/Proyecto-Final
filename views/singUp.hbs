@@ -1,0 +1,43 @@
+
+
+
+<div class="container text-center forms col-11 col-md-8 con-lg-6 mb-3">
+<form action="/singUp" method="post" class="p-3" rounded enctype="multipart/form-data">
+{{#each arrErrors}}
+<p>{{msg}}</p>
+{{/each}}
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="name" class="form-label mt-3" hidden>Nombre</label>
+    <input type="text" class="form-control" id="name" name="nombre" placeholder="Ingresá tu nombre" autofocus
+    {{#if dataForm.nombre}} value="{{dataForm.nombre}}" {{/if}}>
+  </div>
+  <div class="container text-center col-lg-6 mt-3 mb-3">
+    <label for="lastname" class="form-label mt-3" hidden>Apellido</label>
+    <input type="text" class="form-control" id="lastname" name="apellido" placeholder="Ingresá tu Apellido"
+    {{#if dataForm.apellido}} value="{{dataForm.apellido}}" {{/if}}>
+  </div>
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="age" class="form-label mt-3" hidden>Edad</label>
+    <input type="text" class="form-control" id="age" name="edad" placeholder="Ingresá tu edad"
+    {{#if dataForm.edad}} value="{{dataForm.edad}}" {{/if}}>
+  </div>
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="username" class="form-label mt-3" hidden>Usuario</label>
+    <input type="text" class="form-control" id="username" name="usuario" placeholder="Ingresá tu Usuario"
+    {{#if dataForm.usuario}} value="{{dataForm.usuario}}" {{/if}}>
+<div class=" container text-center mt-3 mb-3">
+    <label for="password" class="form-label mt-3" hidden>Contraseña</label>
+    <input type="password" onclick="convierteMd5(this.form)" value="Convierte a md5" class="form-control" id="password" name="contrasenia">
+  </div>
+  <div class="container text-center mt-3 mb-3">
+    <label for="imageFile" class="form-label" hidden>Imagen</label>
+    <input type="file" class="form-control" id="imageFile" name="imagen">
+  </div>
+
+    <button type="submit" class=" container btn btn-primary mt-3">Registrar</button>
+
+    
+</form>
+  </div>
+  <a href="/"><input type="button" value="Cancelar" class="btn btn-secondary mb-3"></a>
+  

@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
-const modelUsers = require("../models/modelUsers");
+const modelUsers = require ("../models/modelUsers")
 
 router.get("/", (req, res) =>{
     res.render("Login");
@@ -24,4 +24,8 @@ router.post("/", async (req, res) => {
       res.render("login", { message });
     }
  });
-module.exports = router;
+
+
+
+    module.exports = router;
+    

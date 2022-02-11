@@ -2,8 +2,83 @@
 <div class="container">
   <div class="row mt-5 ">
     <div class="col mt-5 mb-5 text-white text-center">
-      <h1>Bienvenid@, mi nombre es Yireh</h1>
+      <h1>Hola, mi nombre es Yireh</h1>
     </div>
     <div class="mt-5 mb-5 text-white text-center"><h2>Soy tu app y vamos a administrar tu
         presupuesto personal.</h2></div>
   </div>
+
+
+
+<div>
+  <table class=" container forms table  mt-5">
+  <thead>
+    <tr class="text-center">
+      <th colspan="5">
+        <h4>Ingresos</h4>
+        </th>
+    </tr>
+    <tr class="text-center">
+          <th colspan="5">
+              <a href="/addIncome"><button class="btn btn-primary">Agregar</button></a>
+          </th>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Monto</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each info}}
+    <tr>
+      <td>{{fecha}}</td>
+      <td>{{descripcion}}</td>
+      <td>{{monto}}</td>
+      <td class="text-center">
+        <a href="/editIncome/oneIncome.id_ingreso"><button class="btn btn-danger">Eliminar</button></a>
+        <a href="/editIncome/oneIncome.id_ingreso"><button class="btn btn-warning">Modificar</button></a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+  </div>
+<div>
+  <table class=" container forms table mt-5">
+  <thead>
+     <tr class="text-center">
+      <th colspan="5">
+        <h4>Egresos</h4>
+        </th>
+    <tr class="text-center">
+          <th colspan="5">
+              <a href="/addExpenses"><button class="btn btn-primary">Agregar</button></a>
+          </th>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Monto</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each report}}
+    <tr>
+      <td>{{fecha}}</td>
+      <td>{{descripcion}}</td>
+      <td>{{monto}}</td>
+      <td class="text-center">
+        <a href="/editItem/{{id}}"><button class="btn btn-danger">Eliminar</button></a>
+        <a href="/editItem/{{id}}"><button class="btn btn-warning">Modificar</button></a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+
+  
+
+  

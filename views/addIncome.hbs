@@ -1,0 +1,48 @@
+<div class="container text-center forms col-11 col-md-8 con-lg-6 mt-5 mb-3">
+<form action="/addIncome" method="post" class="container text-center col-11 col-md-8 con-lg-6 mb-3" rounded>
+{{#each arrErrors}}
+<p>{{msg}}</p>
+{{/each}}
+  <div class=" container text-center mt-3 mb-3 col-lg-5">
+    <label for="fecha" class="form-label mt-3">Fecha</label>
+    <input type="date" class="form-control" id="fecha" name="fecha"
+    {{#if dataForm.fecha}} value="{{dataForm.fecha}}" {{/if}}>
+  </div>
+  <div class="container text-center mt-3 mb-3 col-lg-5">
+    <label for="descripcion" class="form-label mt-3" hidden>Descripción</label>
+    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresá una breve descripción"
+    {{#if dataForm.descripcion}} value="{{dataForm.descripcion}}" {{/if}}>
+  </div>
+  <div class="container text-center mt-3 mb-3 col-lg-5">
+    <select class="form-select" aria-label="Default select example" name="id_concepto" {{#if dataForm.id_concepto}} value="{{dataForm.id_concepto}}" {{/if}}>
+  <option selected>Seleccioná un opción</option>
+  <option value="1">Ingreso mensual</option>
+  <option value="2">Ingreso semanal</option>
+  <option value="3">Ingreso diario</option>
+  <option value="4">Comida</option>
+  <option value="5">Combustible</option>
+  <option value="6">Games/option>
+  <option value="7">Lectura</option>
+  <option value="8">Tecnolgía</option>
+  <option value="9">Alquiler</option>
+  <option value="10">Impuestos</option>
+  <option value="11">Servicios</option>
+  <option value="12">Tarjeta de Crédito</option>
+  <option value="13">Préstamo</option>
+  <option value="14">Rodado</option>
+  <option value="15">Seguro</option>
+  <option value="16">Transporte</option>
+  <option value="17">Matrícula</option>
+  <option value="18">Aportes</option>
+</select>
+  </div>
+  <div class="container text-center mt-3 mb-3 col-lg-5">
+    <label for="monto" class="form-label mt-3" hidden>Monto</label>
+    <input type="text"  class="form-control" id="monto" name="monto" placeholder="Ingresá el monto"
+    {{#if dataForm.monto}} value="{{dataForm.monto}}" {{/if}}>
+  </div>
+  <button type="submit" class="btn btn-primary text-center mt-3 mb-4">Agregar</button>
+  
+</form>
+<a href="/"><input type="button" value="Cancelar" class="btn btn-secondary mb-3"></a>
+</div>
