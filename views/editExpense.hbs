@@ -1,20 +1,20 @@
   <div class="container text-center forms col-11 col-md-8 con-lg-6 mb-3">
-<form action="/addExpenses" method="post" class="container text-center col-11 col-md-8 con-lg-6 mb-3" rounded>
+<form action="/editExpense/:id_egreso" method="post" class="container text-center col-11 col-md-8 con-lg-6 mb-3" rounded>
 {{#each arrErrors}}
 <p>{{msg}}</p>
 {{/each}}
   <div class=" container text-center mt-3 mb-3 col-lg-5">
     <label for="fecha" class="form-label mt-3">Fecha</label>
     <input type="date" class="form-control" id="fecha" name="fecha"
-    {{#if dataForm.fecha}} value="{{dataForm.fecha}}" {{/if}}>
+    value="{{expense.fecha}}">
   </div>
   <div class="container text-center mt-3 mb-3 col-lg-5">
     <label for="descripcion" class="form-label mt-3"hidden>Descripción</label>
     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresá una breve descripción"
-    {{#if dataForm.descripcion}} value="{{dataForm.descripcion}}" {{/if}}>
+    value="{{expense.descripcion}}">
   </div>
   <div class="container text-center mt-3 mb-3 col-lg-5">
-    <select class="form-select" aria-label="Default select example" name="id_concepto" {{#if dataForm.id_concepto}} value="{{dataForm.id_concepto}}" {{/if}}>
+    <select class="form-select" aria-label="Default select example" name="id_concepto">
   <option selected>Seleccioná un opción</option>
   <option value="1">Ingreso mensual</option>
   <option value="2">Ingreso semanal</option>
@@ -39,9 +39,9 @@
   <div class="container text-center mt-3 mb-3 col-lg-5">
     <label for="monto" class="form-label mt-3" hidden>Monto</label>
     <input type="text"  class="form-control" id="monto" name="monto" placeholder="Ingresá el Monto"
-    {{#if dataForm.monto}} value="{{dataForm.monto}}" {{/if}}>
+    value="{{expense.monto}}">
   </div>
-  <button type="submit" class="btn btn-primary text-center mt-3 mb-4">Agregar</button>
+  <a href="/deleteExpense/{{expense.id_egreso}}"><input type="button" value="Borrar" class="btn btn-danger mt-3 mb-4"></a>
 </form>
 <a href="/"><input type="button" value="Cancelar" class="btn btn-secondary mb-3"></a>
 </div>

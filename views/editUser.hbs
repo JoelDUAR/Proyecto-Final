@@ -1,0 +1,41 @@
+<div class="container text-center forms col-11 col-md-8 con-lg-6 mt-5 mb-3" >
+<form action="/editUser" method="post" class="p-3" rounded enctype="multipart/form-data">
+<input type="text" name="id_usuario" value="{{user.id_usuario}}"hidden> 
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="name" class="form-label mt-3" hidden>Nombre</label>
+    <input type="text" class="form-control" id="name" name="nombre" placeholder="Ingresá tu nombre" autofocus
+    value="{{user.nombre}}">
+  </div>
+  <div class="container text-center col-lg-6 mt-3 mb-3">
+    <label for="lastname" class="form-label mt-3" hidden>Apellido</label>
+    <input type="text" class="form-control" id="lastname" name="apellido" placeholder="Ingresá tu Apellido"
+    value="{{user.apellido}}">
+  </div>
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="age" class="form-label mt-3" hidden>Edad</label>
+    <input type="text" class="form-control" id="age" name="edad" placeholder="Ingresá tu edad"
+    value="{{user.edad}}">
+  </div>
+  <div class=" container text-center col-lg-6 mt-3 mb-3">
+    <label for="username" class="form-label mt-3" hidden>Usuario</label>
+    <input type="text" class="form-control" id="username" name="usuario" placeholder="Ingresá tu Usuario"
+    value="{{user.usuario}}">
+<div class=" container text-center mt-3 mb-3">
+    <label for="password" class="form-label mt-3" hidden>Contraseña</label>
+    <input type="password" class="form-control" id="password" name="contrasenia" value="{{user.contrasenia}}">
+  </div>
+
+<input type="text" name="prevImage" value="{{user.image}}" hidden>
+
+  <div class="container text-center mt-3 mb-3">
+    <label for="imageFile" class="form-label" hidden>Imagen</label>
+    <input type="file" class="form-control" id="imageFile" name="imagen">
+  </div>
+
+    <a href="/deleteUser/{{user.id_usuario}}"><input type="button" value="Borrar" class="btn btn-danger mt-3 mb-3"></a>
+    <a href="/"><input type="button" value="Cancelar" class="btn btn-secondary mt-3 mb-3"></a>
+
+    
+</form>
+  </div>
+  

@@ -9,31 +9,27 @@ const modelUsers = require("../models/modelUsers");
 const cloudinary = require("cloudinary").v2;
 const util = require("util");
 const uploader= util.promisify(cloudinary.uploader.upload)
+const destroy= util.promisify(cloudinary.uploader.destroy)
 const {body, validationResult} = require("express-validator");
 
 router.get("/", async (req, res) =>{
     const info = await modelIncome.getIncome();
     const report = await modelExpenses.getExpenses();
-    res.render("Home", {info, report});
+    res.render("Home", {info, report,});
 });
-
-router.get("/", async (req, res) => {
-    const products = await modelUsers.getAllUsers()
-    const data = products.map((row) => {
-    const imageURL = cloudinary.url(row.imagen, {
+router.get("/Login", async (req, res) =>{
+    const users = await modelUsers.getAllUsers();
+    const data = users.map((value) => {
+        const imageURL = cloudinary.url(value.image, {
               width: 100,
               height: 100,
               crop: "thumb", 
-              gravity: "face"
             });
-            return{ ...row, imageURL };
-
-        });
-        console.log(products)
-        res.render("/Login", { ...row, imageURL });
+        return {...value, imageURL}
     });
-
-
+    res.render("Login", {data});
+});
+ 
 router.get("/addIncome", (req, res) => {
 res.render("addIncome")
 });
@@ -45,7 +41,7 @@ router.get("/addExpenses", (req, res) => {
     const validationAddIncome = [
         body("fecha", "Tenés que ingresar una fecha").exists().isDate(),
         body("descripcion", "Tenés que ingresar una descripción").exists().isLength({min:1}),
-        body("id_concepto", "Tenés que ingresar un concepto").isEmpty(),
+        body("id_concepto", "Tenés que ingresar un concepto").isInt({min:1, max:18}),
         body("monto", "Tenés que ingresar un monto").exists().isNumeric(),
  ]
 
@@ -64,7 +60,7 @@ router.post("/addIncome", validationAddIncome, async (req,res) => {
     const validationAddExpenses = [
         body("fecha", "Tenés que ingresar una fecha").exists().isDate(),
         body("descripcion", "Tenés que ingresar una descripción").exists().isLength({min:1}),
-        body("id_concepto", "Tenés que ingresar un concepto").isEmpty(),
+        body("id_concepto", "Tenés que ingresar un concepto").isInt({min:1, max:18}),
         body("monto", "Tenés que ingresar un monto").exists().isNumeric(),
  ]
 
@@ -103,17 +99,63 @@ await modelUsers.singUp({...req.body, image: img_id})
     res.redirect("/");}
     });
 
-router.get("/editIncome/:id_ingreso", async (req,res) => {
-const row = await modelIncome.getOneIncome(req.params.id_ingreso);
-const oneIncome = {
-    id: row[0].id_ingreso,
-    fecha: row[0].fecha,
-    descripcion: row[0].descripcion,
-    id_concepto: row[0].id_concepto,
-    monto: row[0].monto,
-}
-res.render("editIncome", {oneIncome});
+router.get("/editUser/:id_usuario", async (req, res) => {
+        const row = await modelUsers.getOneUser(req.params.id_usuario)
+        const user = {
+            id_usuario: row[0].id_usuario,
+            nombre: row[0].nombre,
+            apellido: row[0].apellido,
+            edad: row[0].edad,
+            usuario: row[0].usuario,
+            contrasenia: row[0].contrasenia,
+            Imagen: row[0].image,
+        };
+        res.render("editUser", {user});
+    })
+
+router.get("/deleteUser/:id_usuario", async (req, res) => {
+  const row = await modelUsers.getOneUser(req.params.id_usuario);
+  await destroy(row[0].image)
+  await modelUsers.deleteUser(req.params.id_usuario);
+  res.redirect("/Login");
 })
+
+
+router.get("/editIncome/:id_ingreso", async (req, res) => {
+    const row = await modelIncome.getOneIncome(req.params.id_ingreso);
+    const income = {
+        id_ingreso: row[0].id_ingreso,
+        fecha: row[0].fecha,
+        descripcion: row[0].descripcion,
+        id_concepto: row[0].id_concepto,
+        monto: row[0].monto,
+    };
+    res.render("editIncome", {income});
+})
+
+router.get("/deleteIncome/:id_ingreso", async (req, res) => {
+    const row = await modelIncome.deleteIncome(req.params.id_ingreso);
+    await modelIncome.deleteIncome(req.params.id_ingreso);
+    res.redirect("/");
+  })
+
+router.get("/editExpense/:id_egreso", async (req, res) => {
+    const row = await modelExpenses.getOneExpense(req.params.id_egreso)
+    const expense = {
+        id_egreso: row[0].id_egreso,
+        fecha: row[0].fecha,
+        descripcion: row[0].descripcion,
+        id_concepto: row[0].id_concepto,
+        monto: row[0].monto,
+    };
+    res.render("editExpense", {expense});
+})
+
+router.get("/deleteExpense/:id_egreso", async (req, res) => {
+    const row = await modelExpenses.deleteExpese(req.params.id_egreso);
+    await modelExpenses.deleteExpese(req.params.id_egreso);
+    res.redirect("/");
+  })
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const pool = require("../db")
 
 const getExpenses = async () => {
     try {
-        const query = "SELECT * from egresos order by id_egreso DESC LIMIT 3";
+        const query = "SELECT * from egresos order by id_egreso DESC";
         const rows = await pool.query(query);
         return(rows);
     } catch (error) {
@@ -11,10 +11,10 @@ const getExpenses = async () => {
     }
     };
 
-    const getExpense = async (id) => {
+    const getOneExpense = async (id_egreso) => {
         try {
-            const query = "select * from egresos where id= ?"
-            const row = await pool.query(query, [id]);
+            const query = "SELECT * from egresos where id_egreso = ? order by id_egreso DESC"
+            const row = await pool.query(query, [id_egreso]);
             return row;
         } catch (error) {
             console.log(error)
@@ -33,4 +33,11 @@ const addExpenses = async (data) => {
     }
 }
 
-module.exports = {getExpenses, addExpenses, getExpense};
+const deleteExpese = async (id_egreso) => {
+    const query = "delete from egresos where id_egreso = ?"
+    const row = await pool.query(query, (id_egreso))
+    return row;
+};
+
+
+module.exports = {getExpenses, addExpenses, getOneExpense, deleteExpese};

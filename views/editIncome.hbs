@@ -1,26 +1,25 @@
 <div class="container text-center forms col-11 col-md-8 con-lg-6 mt-5 mb-3">
 <form action="/editIncome" method="post" class="container text-center col-11 col-md-8 con-lg-6 mb-3" rounded>
-{{#each arrErrors}}
-<p>{{msg}}</p>
-{{/each}}
+<input type="text" name="id_ingreso" value="{{income.id_ingreso}}"hidden> 
   <div class=" container text-center mt-3 mb-3 col-lg-5">
     <label for="fecha" class="form-label mt-3">Fecha</label>
-    <input type="date" class="form-control" id="fecha" name="fecha" value="{{oneIncome.fecha}}">
+    <input type="date" class="form-control" id="fecha" name="fecha"
+value="{{income.fecha}}">
   </div>
   <div class="container text-center mt-3 mb-3 col-lg-5">
     <label for="descripcion" class="form-label mt-3" hidden>Descripción</label>
     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresá una breve descripción"
-    value="{{oneIncome.description}}">
+    value="{{income.descripcion}}">
   </div>
   <div class="container text-center mt-3 mb-3 col-lg-5">
-    <select class="form-select" aria-label="Default select example" name="id_concepto" value="{{oneIncome.id_concepto}}>
+    <select class="form-select" aria-label="Default select example" name="id_concepto">
   <option selected>Seleccioná un opción</option>
   <option value="1">Ingreso mensual</option>
   <option value="2">Ingreso semanal</option>
   <option value="3">Ingreso diario</option>
   <option value="4">Comida</option>
   <option value="5">Combustible</option>
-  <option value="6">Games/option>
+  <option value="6">Games</option>
   <option value="7">Lectura</option>
   <option value="8">Tecnolgía</option>
   <option value="9">Alquiler</option>
@@ -38,11 +37,10 @@
   <div class="container text-center mt-3 mb-3 col-lg-5">
     <label for="monto" class="form-label mt-3" hidden>Monto</label>
     <input type="text"  class="form-control" id="monto" name="monto" placeholder="Ingresá el monto"
-    value="{{oneIncome.monto}}>
+    value="{{income.monto}}">
   </div>
-  <input type="submit" value="Cambiar" class="btn btn primary">
-  <a href="/deleteOneIncome/{{oneIncome.id_ingreso}}"><input type="button" value="Borrar" class="btn btn-danger"></a>
-  <a href="/"><input type="button" value="Cancelar" class="btn btn-secondary"></a>
+  <a href="/deleteIncome/{{income.id_ingreso}}"><input type="button" value="Borrar" class="btn btn-danger mt-3 mb-4"></a>
 </form>
-
+<a href="/"><input type="button" value="Cancelar" class="btn btn-secondary mb-3"></a>
 </div>
+

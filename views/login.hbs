@@ -32,6 +32,38 @@
 
 <div class="text-center">
   <a href="/singUp"><button class=" btn btn-primary my-2">Registrarme</button></a>
+ <a href="/"><input type="button" value="Home" class="btn btn-secondary"></a>
 </div>
 
-
+<table class=" container forms table mt-5">
+  <thead>
+     <tr class="text-"center>
+      <th colspan="5">
+        <h4>Usuarios Registrados</h4>
+        </th>
+        </tr>
+  <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Imagen</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{nombre}}</td>
+      <td>{{apellido}}</td>
+      <td>{{edad}}</td>
+      <td>{{usuario}}</td>
+      <td><img src="{{imageURL}}" alt="{{nombre}}"></td>
+      <td class="text-center">
+        <a href="/editUser/{{id_usuario}}"><button class="btn btn-danger">Eliminar</button></a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

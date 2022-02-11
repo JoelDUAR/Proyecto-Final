@@ -2,7 +2,7 @@ const pool = require("../db");
 
 const getIncome = async () => {
     try {
-        const query = "SELECT * from ingresos order by id_ingreso DESC LIMIT 3";
+        const query = "SELECT * from ingresos order by id_ingreso DESC";
         const rows = await pool.query(query);
         return(rows);
     } catch (error) {
@@ -12,7 +12,7 @@ const getIncome = async () => {
 
     const getOneIncome = async (id_ingreso) => {
         try {
-            const query = "select * from ingresos where id_ingreso= ?"
+            const query = "SELECT * from ingresos where id_ingreso = ? order by id_ingreso DESC"
             const row = await pool.query(query, [id_ingreso]);
             return row;
         } catch (error) {
@@ -32,5 +32,11 @@ const addIncome = async (operation) => {
     }
 }
 
+const deleteIncome = async (id_ingreso) => {
+    const query = "delete from ingresos where id_ingreso = ?"
+    const row = await pool.query(query, (id_ingreso))
+    return row;
+};
 
-module.exports = {getIncome,  addIncome, getOneIncome}
+
+module.exports = {getIncome,  addIncome, getOneIncome, deleteIncome}
