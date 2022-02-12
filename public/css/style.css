@@ -20,12 +20,11 @@ body{
     box-shadow: 3px 2px 15px black;    
 }
 
-input[type="button"] :hover{
-    transform: scale(1.1);
+.containerFooter {
+    background-color: rgba(4, 17, 41, 0.521);
 }
-
-input[type="button"]:active{
-    background: rgb(6, 78, 187);
-    transform: scale(0.9);
-    box-shadow: 1px 2px 10px black; 
-}
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+    
+  }
